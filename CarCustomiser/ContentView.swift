@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let car = Car(make: "Porsche", model: "718 Boxster", topSpeed: 185, acceleration: 3.9, handling: 7)
+    
     var body: some View {
-        Text("Hello, world!")
+        Text("Car Make: \(car.make)")
             .padding()
     }
 }
@@ -19,3 +22,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+     

@@ -10,24 +10,20 @@ import XCTest
 
 class CarCustomiserTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testNewCarGivesCarWithAllAttributesSet() {
+        
+        let car = Car(make: "Porsche", model: "718 Boxster", topSpeed: 185, acceleration: 3.9, handling: 7)
+        
+        XCTAssertEqual(car.make, "Porsche")
+        XCTAssertEqual(car.model, "718 Boxster")
+        XCTAssertEqual(car.topSpeed, 185)
+        XCTAssertEqual(car.acceleration, 3.9)
+        XCTAssertEqual(car.handling, 7)
+        
+        
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+    
+    
 
 }
+ 
