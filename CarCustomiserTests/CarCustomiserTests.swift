@@ -12,16 +12,20 @@ class CarCustomiserTests: XCTestCase {
 
     func testNewCarGivesCarWithAllAttributesSet() {
         
-        let car = Car(make: "Porsche", model: "718 Boxster", topSpeed: 185, acceleration: 3.9, handling: 7)
+        let car = Car(make: "Porsche", model: "718 Spyder", topSpeed: 185, acceleration: 3.9, handling: 7)
+        
+        let correctResult = """
+                                Make: Porsche
+                                Model: 718 Spyder
+                                Top speed: 185 km/h
+                                Acceleration (0-100 km/h): 3.9
+                                Handling: 7
+                                """
         
         XCTAssertEqual(car.make, "Porsche")
-        XCTAssertEqual(car.model, "718 Boxster")
-        XCTAssertEqual(car.topSpeed, 185)
-        XCTAssertEqual(car.acceleration, 3.9)
-        XCTAssertEqual(car.handling, 7)
-        
-        
+        XCTAssertEqual(car.displayStats(), correctResult)
     }
+    
     
     
 
