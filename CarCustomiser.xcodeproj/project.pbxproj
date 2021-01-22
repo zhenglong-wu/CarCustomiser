@@ -105,11 +105,11 @@
 			children = (
 				66E9B24725B8441F00CD694A /* CarCustomiserApp.swift */,
 				66E9B24925B8441F00CD694A /* ContentView.swift */,
+				66C2E30925B9E5CE003EE36E /* CarImageView.swift */,
 				66E9B24B25B8442100CD694A /* Assets.xcassets */,
 				66E9B25025B8442100CD694A /* Info.plist */,
 				66E9B24D25B8442100CD694A /* Preview Content */,
 				66E9B27525B8466100CD694A /* Car.swift */,
-				66C2E30925B9E5CE003EE36E /* CarImageView.swift */,
 				6680AC7A25BA1D2F00E087E0 /* StarterCars.swift */,
 			);
 			path = CarCustomiser;

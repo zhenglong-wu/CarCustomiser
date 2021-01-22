@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     
-    @State public var starterCars = StarterCars()
+    @State private var starterCars = StarterCars()
     
     @State var selectedCar: Int = 0 {
         didSet{
@@ -24,10 +24,10 @@ struct ContentView: View {
     @State private var tyresPackage = false
     @State private var aeroPackage = false
     @State private var icuPackage = false
-    @State private var remainingFunds: Int = 25000
+    @State private var remainingFunds: Int = 10000
     
     var exhaustPackageEnabled: Bool {
-        if remainingFunds < 8200 {
+        if remainingFunds < 6100 {
             return false
         }
         else{
@@ -36,7 +36,7 @@ struct ContentView: View {
     }
     
     var tyresPackageEnabled: Bool {
-        if remainingFunds < 5300 {
+        if remainingFunds < 2500 {
             return false
         }
         else{
@@ -54,7 +54,7 @@ struct ContentView: View {
     }
     
     var icuPackageEnabled: Bool {
-        if remainingFunds < 9800 {
+        if remainingFunds < 7500 {
             return false
         }
         else{
@@ -71,11 +71,11 @@ struct ContentView: View {
                 self.exhaustPackage = newValue
                 if newValue == true{
                     starterCars.cars[selectedCar].topSpeed+=13
-                    remainingFunds -= 8200
+                    remainingFunds -= 6100
                 }
                 else{
                     starterCars.cars[selectedCar].topSpeed-=13
-                    remainingFunds += 8200
+                    remainingFunds += 6100
                 }
             }
         )
@@ -87,11 +87,11 @@ struct ContentView: View {
                 self.tyresPackage = newValue
                 if newValue == true{
                     starterCars.cars[selectedCar].acceleration-=0.2
-                    remainingFunds -= 5300
+                    remainingFunds -= 2500
                 }
                 else{
                     starterCars.cars[selectedCar].acceleration+=0.2
-                    remainingFunds += 5300
+                    remainingFunds += 2500
                 }
             }
         )
@@ -120,12 +120,12 @@ struct ContentView: View {
                 if newValue == true{
                     starterCars.cars[selectedCar].topSpeed+=7
                     starterCars.cars[selectedCar].acceleration-=0.1
-                    remainingFunds -= 9800
+                    remainingFunds -= 7500
                 }
                 else{
                     starterCars.cars[selectedCar].topSpeed-=7
                     starterCars.cars[selectedCar].acceleration+=0.1
-                    remainingFunds += 9800
+                    remainingFunds += 7500
                 }
             }
         )
@@ -135,9 +135,8 @@ struct ContentView: View {
             
             VStack {
                 
-                if selectedCar == 0{
-                    carImageView
-                }
+                CarImageView.carImageView3()
+                .padding(.bottom, 10)
                 Spacer()
                 Form {
                     VStack (alignment: .leading, spacing: 20) {
@@ -156,13 +155,13 @@ struct ContentView: View {
                 
                     .font(.system(size: 18))
                     Section {
-                        Toggle("Exhaust Manifold & Header - £8,200", isOn: exhaustPackageBinding)
+                        Toggle("Exhaust Manifold & Header - £6,100", isOn: exhaustPackageBinding)
                             .disabled(!exhaustPackageEnabled)
-                        Toggle("Slick Tyres - £5,300", isOn: tyresPackageBinding)
+                        Toggle("Slick Tyres - £2,500", isOn: tyresPackageBinding)
                             .disabled(!tyresPackageEnabled)
                         Toggle("Front/Rear Splitter + Rear Wing - £3,900", isOn: aeroPackageBinding)
                             .disabled(!aeroPackageEnabled)
-                        Toggle("ICU + ECU Upgrade - £9,800", isOn: icuPackageBinding)
+                        Toggle("ICU + ECU Upgrade - £7,500", isOn: icuPackageBinding)
                             .disabled(!icuPackageEnabled)
                         Button("Reset", action: {
                             resetDisplayCurrent(selectedCar: selectedCar)
@@ -192,7 +191,7 @@ struct ContentView: View {
     
     func resetDisplayNext(selectedCar: Int){
         if selectedCar-1 < 0{
-            remainingFunds = 25000
+            remainingFunds = 10000
             starterCars.cars[0].topSpeed = starterCars.carsDefault[0].topSpeed
             starterCars.cars[0].acceleration = starterCars.carsDefault[0].acceleration
             starterCars.cars[0].handling = starterCars.carsDefault[0].handling
@@ -204,7 +203,7 @@ struct ContentView: View {
             
         }
         else{
-            remainingFunds = 25000
+            remainingFunds = 10000
             starterCars.cars[selectedCar-1].topSpeed = starterCars.carsDefault[selectedCar-1].topSpeed
             starterCars.cars[selectedCar-1].acceleration = starterCars.carsDefault[selectedCar-1].acceleration
             starterCars.cars[selectedCar-1].handling = starterCars.carsDefault[selectedCar-1].handling
@@ -220,7 +219,7 @@ struct ContentView: View {
         starterCars.cars[selectedCar].topSpeed = starterCars.carsDefault[selectedCar].topSpeed
         starterCars.cars[selectedCar].acceleration = starterCars.carsDefault[selectedCar].acceleration
         starterCars.cars[selectedCar].handling = starterCars.carsDefault[selectedCar].handling
-        remainingFunds = 25000
+        remainingFunds = 10000
         exhaustPackage = false
         tyresPackage = false
         aeroPackage = false

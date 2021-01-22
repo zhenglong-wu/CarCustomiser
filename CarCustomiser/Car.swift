@@ -14,7 +14,6 @@ struct Car {
     var topSpeed: Int
     var acceleration: Double
     var handling: Int
-    var pfp: Int
     
     func displayStats() -> String{
         let allStats =

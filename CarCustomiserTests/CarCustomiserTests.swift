@@ -18,7 +18,7 @@ class CarCustomiserTests: XCTestCase {
                                 Make: Porsche
                                 Model: 718 Spyder
                                 Top speed: 185 km/h
-                                Acceleration (0-100 km/h): 3.9
+                                Acceleration (0-100 km/h): 3.9s
                                 Handling: 7
                                 """
         
