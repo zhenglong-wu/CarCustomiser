@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6680AC7B25BA1D2F00E087E0 /* StarterCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6680AC7A25BA1D2F00E087E0 /* StarterCars.swift */; };
-		66C2E30A25B9E5CE003EE36E /* CarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C2E30925B9E5CE003EE36E /* CarImageView.swift */; };
+		6680AC8225BA549C00E087E0 /* CarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C2E30925B9E5CE003EE36E /* CarImageView.swift */; };
+		6680AC8325BA549D00E087E0 /* CarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C2E30925B9E5CE003EE36E /* CarImageView.swift */; };
 		66E9B24825B8441F00CD694A /* CarCustomiserApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E9B24725B8441F00CD694A /* CarCustomiserApp.swift */; };
 		66E9B24A25B8441F00CD694A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E9B24925B8441F00CD694A /* ContentView.swift */; };
 		66E9B24C25B8442100CD694A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E9B24B25B8442100CD694A /* Assets.xcassets */; };
@@ -270,9 +271,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				66E9B24A25B8441F00CD694A /* ContentView.swift in Sources */,
-				66C2E30A25B9E5CE003EE36E /* CarImageView.swift in Sources */,
 				66E9B24825B8441F00CD694A /* CarCustomiserApp.swift in Sources */,
 				6680AC7B25BA1D2F00E087E0 /* StarterCars.swift in Sources */,
+				6680AC8225BA549C00E087E0 /* CarImageView.swift in Sources */,
 				66E9B27625B8466100CD694A /* Car.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +284,7 @@
 			files = (
 				66E9B27D25B847CE00CD694A /* Car.swift in Sources */,
 				66E9B25A25B8442100CD694A /* CarCustomiserTests.swift in Sources */,
+				6680AC8325BA549D00E087E0 /* CarImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
