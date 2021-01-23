@@ -25,42 +25,30 @@ struct ContentView: View {
     @State private var aeroPackage = false
     @State private var icuPackage = false
     @State private var remainingFunds: Int = 10000
+    @State private var timeRemaining = 30
+    
     
     var exhaustPackageEnabled: Bool {
-        if remainingFunds < 6100 {
-            return false
-        }
-        else{
-            return true
-        }
+        return exhaustPackage ? true : remainingFunds >= 6100 ? true : false
     }
     
     var tyresPackageEnabled: Bool {
-        if remainingFunds < 2500 {
-            return false
-        }
-        else{
-            return true
-        }
+        return tyresPackage ? true: remainingFunds >= 2500 ? true : false
     }
     
     var aeroPackageEnabled: Bool {
-        if remainingFunds < 3900 {
-            return false
-        }
-        else{
-            return true
-        }
+        return aeroPackage ? true: remainingFunds >= 3900 ? true : false
     }
     
     var icuPackageEnabled: Bool {
-        if remainingFunds < 7500 {
-            return false
-        }
-        else{
-            return true
-        }
+        return icuPackage ? true : remainingFunds >= 7500 ? true : false
     }
+    
+    var timeEnabled: Bool {
+        return timeRemaining>0 ? true : false
+    }
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         
@@ -135,9 +123,30 @@ struct ContentView: View {
             
             VStack {
                 
-                CarImageView.carImageView3()
-                .padding(.bottom, 10)
-                Spacer()
+                Text("\(timeRemaining)")
+                    .onReceive(timer) { _ in
+                        if self.timeRemaining > 0 {
+                            self.timeRemaining -= 1
+                        }
+                    }
+                    .foregroundColor(.red)
+                
+                if selectedCar == 0 {
+                    CarImageView0()
+                }
+                else if selectedCar == 1{
+                    CarImageView1()
+                }
+                else if selectedCar == 2{
+                    CarImageView2()
+                }
+                else if selectedCar == 3{
+                    CarImageView3()
+                }
+                else if selectedCar == 4{
+                    CarImageView4()
+                }
+        
                 Form {
                     VStack (alignment: .leading, spacing: 20) {
                 
@@ -147,6 +156,7 @@ struct ContentView: View {
                                 selectedCar += 1
                                 resetDisplayNext(selectedCar: selectedCar)
                             })
+                            .disabled(!timeEnabled)
                         }
                     }
                     .font(.system(size: 16))
@@ -163,12 +173,8 @@ struct ContentView: View {
                             .disabled(!aeroPackageEnabled)
                         Toggle("ICU + ECU Upgrade - £7,500", isOn: icuPackageBinding)
                             .disabled(!icuPackageEnabled)
-                        Button("Reset", action: {
-                            resetDisplayCurrent(selectedCar: selectedCar)
-                        })
-        
-                        
                     }
+                    .disabled(!timeEnabled)
                     .font(.system(size: 15))
 
                     
@@ -213,19 +219,6 @@ struct ContentView: View {
             icuPackage = false
         }
         
-    }
-    
-    func resetDisplayCurrent(selectedCar: Int){
-        starterCars.cars[selectedCar].topSpeed = starterCars.carsDefault[selectedCar].topSpeed
-        starterCars.cars[selectedCar].acceleration = starterCars.carsDefault[selectedCar].acceleration
-        starterCars.cars[selectedCar].handling = starterCars.carsDefault[selectedCar].handling
-        remainingFunds = 10000
-        exhaustPackage = false
-        tyresPackage = false
-        aeroPackage = false
-        icuPackage = false
-        
-    
     }
      
 }
