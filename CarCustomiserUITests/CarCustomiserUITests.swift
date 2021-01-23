@@ -27,13 +27,31 @@ class CarCustomiserUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         
-        
         let tablesQuery = XCUIApplication().tables
         tablesQuery/*@START_MENU_TOKEN@*/.switches["Exhaust Manifold & Header - £6,100"]/*[[".cells[\"Exhaust Manifold & Header - £6,100\"].switches[\"Exhaust Manifold & Header - £6,100\"]",".switches[\"Exhaust Manifold & Header - £6,100\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         tablesQuery/*@START_MENU_TOKEN@*/.switches["Slick Tyres - £2,500"]/*[[".cells[\"Slick Tyres - £2,500\"].switches[\"Slick Tyres - £2,500\"]",".switches[\"Slick Tyres - £2,500\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
         XCTAssertEqual(tablesQuery/*@START_MENU_TOKEN@*/.switches["Front/Rear Splitter + Rear Wing - £3,900"]/*[[".cells[\"Front\/Rear Splitter + Rear Wing - £3,900\"].switches[\"Front\/Rear Splitter + Rear Wing - £3,900\"]",".switches[\"Front\/Rear Splitter + Rear Wing - £3,900\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.isEnabled, false)
         XCTAssertEqual(tablesQuery/*@START_MENU_TOKEN@*/.switches["ICU + ECU Upgrade - £7,500"]/*[[".cells[\"ICU + ECU Upgrade - £7,500\"].switches[\"ICU + ECU Upgrade - £7,500\"]",".switches[\"ICU + ECU Upgrade - £7,500\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.isEnabled, false)
+        
+    }
+    
+    func testWhenBoughtTyresAndICUPackageOtherTwoUpgradesAreDisabledButNotTyresAndICU() throws {
+        
+        let app = XCUIApplication()
+        app.launch()
+        
+        
+        let tablesQuery = XCUIApplication().tables
+        tablesQuery/*@START_MENU_TOKEN@*/.switches["Slick Tyres - £2,500"]/*[[".cells[\"Slick Tyres - £2,500\"].switches[\"Slick Tyres - £2,500\"]",".switches[\"Slick Tyres - £2,500\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery/*@START_MENU_TOKEN@*/.switches["ICU + ECU Upgrade - £7,500"]/*[[".cells[\"ICU + ECU Upgrade - £7,500\"].switches[\"ICU + ECU Upgrade - £7,500\"]",".switches[\"ICU + ECU Upgrade - £7,500\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        XCTAssertEqual(tablesQuery/*@START_MENU_TOKEN@*/.switches["Exhaust Manifold & Header - £6,100"]/*[[".cells[\"Exhaust Manifold & Header - £6,100\"].switches[\"Exhaust Manifold & Header - £6,100\"]",".switches[\"Exhaust Manifold & Header - £6,100\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.isEnabled, false)
+        XCTAssertEqual(tablesQuery/*@START_MENU_TOKEN@*/.switches["Front/Rear Splitter + Rear Wing - £3,900"]/*[[".cells[\"Front\/Rear Splitter + Rear Wing - £3,900\"].switches[\"Front\/Rear Splitter + Rear Wing - £3,900\"]",".switches[\"Front\/Rear Splitter + Rear Wing - £3,900\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.isEnabled, false)
+        
+        XCTAssertEqual(tablesQuery/*@START_MENU_TOKEN@*/.switches["Slick Tyres - £2,500"]/*[[".cells[\"Slick Tyres - £2,500\"].switches[\"Slick Tyres - £2,500\"]",".switches[\"Slick Tyres - £2,500\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.isEnabled, true)
+        XCTAssertEqual(tablesQuery/*@START_MENU_TOKEN@*/.switches["ICU + ECU Upgrade - £7,500"]/*[[".cells[\"ICU + ECU Upgrade - £7,500\"].switches[\"ICU + ECU Upgrade - £7,500\"]",".switches[\"ICU + ECU Upgrade - £7,500\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.isEnabled, true)
+        
         
     }
 
