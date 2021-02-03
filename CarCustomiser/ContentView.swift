@@ -27,7 +27,6 @@ struct ContentView: View {
     @State private var remainingFunds: Int = 10000
     @State private var timeRemaining = 30
     
-    
     var exhaustPackageEnabled: Bool {
         return exhaustPackage ? true : remainingFunds >= 6100 ? true : false
     }
@@ -45,7 +44,7 @@ struct ContentView: View {
     }
     
     var timeEnabled: Bool {
-        return timeRemaining>0 ? true : false
+        return timeRemaining > 0 ? true : false
     }
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -146,7 +145,6 @@ struct ContentView: View {
                 else if selectedCar == 4{
                     CarImageView4()
                 }
-        
                 Form {
                     VStack (alignment: .leading, spacing: 20) {
                 
